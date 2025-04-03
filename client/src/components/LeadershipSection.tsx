@@ -3,6 +3,8 @@ import LeadershipCard from './LeadershipCard';
 import { Shield, CornerDownRight, User } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import ncscLogoPath from '../assets/NCSC.png';
+import agentIconPath from '../assets/agent-icon.png';
+import doiLogoPath from '../assets/DOI.webp';
 
 interface LeadershipSectionProps {
   title: string;
@@ -33,7 +35,18 @@ const LeadershipSection = ({
   return (
     <div className="mb-12 bg-card rounded-lg overflow-hidden border border-border shadow-lg relative corner-box">
       <div className={`${titleBgColor} py-3 px-4 flex items-center border-b border-border`}>
-        <img src={ncscLogoPath} alt="NCSC Logo" className="h-5 w-5 mr-2" />
+        {title === "HUMINT Division" && (
+          <img src={agentIconPath} alt="Agent Icon" className="h-5 w-5 mr-2" />
+        )}
+        {title === "REDACTED" && (
+          <img src={agentIconPath} alt="Agent Icon" className="h-5 w-5 mr-2" />
+        )}
+        {title === "Intelligence Directorate" && (
+          <img src={doiLogoPath} alt="Directorate of Intelligence" className="h-5 w-5 mr-2" />
+        )}
+        {title !== "HUMINT Division" && title !== "REDACTED" && title !== "Intelligence Directorate" && (
+          <img src={ncscLogoPath} alt="NCSC Logo" className="h-5 w-5 mr-2" />
+        )}
         <h3 className="font-bold tracking-wide">{title}</h3>
       </div>
       
