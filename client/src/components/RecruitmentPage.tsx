@@ -1,25 +1,33 @@
 import { useState } from "react";
-import { Play, Shield, Info, FileText, AlertTriangle, ChevronRight, Star, User, Lock } from "lucide-react";
+import { 
+  Play, Shield, Info, FileText, AlertTriangle, ChevronRight, 
+  Star, User, Lock, ExternalLink 
+} from "lucide-react";
+import { SiDiscord, SiRoblox } from "react-icons/si";
 
-const RecruitmentPage = () => {
+interface RecruitmentPageProps {
+  applicationUrl?: string;
+}
+
+const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdVED14zX66oVHsRudvO4iwvxdmKIEvj45ym3PTjVj2ROkZyA/viewform?usp=sharing" }: RecruitmentPageProps) => {
   const [activeTab, setActiveTab] = useState("faq");
 
   const handleStartApplication = () => {
-    window.open("https://forms.google.com/", "_blank");
+    window.open(applicationUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
     <section className="container mx-auto px-4 py-12">
       {/* <!-- CLASSIFIED --> */}
-      <div className="mb-10 border-b border-gray-800 pb-6 relative">
+      <div className="mb-10 border-b border-border/30 pb-6 relative">
         {/* Title section with decorative elements */}
         <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-primary opacity-30"></div>
         <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-primary opacity-30"></div>
         
         <h1 className="text-3xl font-bold mb-3 tracking-tight">NCSC Recruitment Division</h1>
         <div className="max-w-2xl">
-          <p className="text-gray-300 mb-3">Join the elite intelligence organization protecting the community from threats to its integrity. The National Counterintelligence & Security Center only recruits the most dedicated individuals.</p>
-          <div className="flex items-center py-1 px-3 bg-gray-900 rounded-md inline-block text-xs font-mono text-primary">
+          <p className="text-muted-foreground mb-3">Join the elite organization protecting the community. The National Counterintelligence & Security Center only recruits the most dedicated individuals for [REDACTED].</p>
+          <div className="flex items-center py-1 px-3 bg-secondary/50 rounded-md inline-block text-xs font-mono text-primary mt-2">
             <Lock className="h-3 w-3 mr-1" />
             <span>SECURITY CLEARANCE REQUIRED FOR ADVANCED POSITIONS</span>
           </div>
@@ -30,7 +38,7 @@ const RecruitmentPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2">
-          <div className="bg-gray-950 rounded-lg overflow-hidden border border-gray-800 shadow-lg relative">
+          <div className="bg-card rounded-lg overflow-hidden border border-border shadow-md relative modern-card">
             {/* Corner elements */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-primary opacity-30"></div>
             <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-primary opacity-30"></div>
@@ -38,9 +46,9 @@ const RecruitmentPage = () => {
             <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-primary opacity-30"></div>
             
             {/* Tabs navigation */}
-            <div className="flex space-x-1 border-b border-gray-800 px-2 overflow-x-auto bg-gray-900">
+            <div className="flex space-x-1 border-b border-border/50 px-2 overflow-x-auto bg-secondary/30">
               <button 
-                className={`px-5 py-3 font-medium text-gray-400 hover:text-white relative transition-colors duration-200 ${activeTab === 'process' ? 'text-white' : ''} focus:outline-none whitespace-nowrap`}
+                className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'process' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
                 onClick={() => setActiveTab('process')}
               >
                 <div className="flex items-center">
@@ -51,7 +59,7 @@ const RecruitmentPage = () => {
               </button>
               
               <button 
-                className={`px-5 py-3 font-medium text-gray-400 hover:text-white relative transition-colors duration-200 ${activeTab === 'requirements' ? 'text-white' : ''} focus:outline-none whitespace-nowrap`}
+                className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'requirements' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
                 onClick={() => setActiveTab('requirements')}
               >
                 <div className="flex items-center">
@@ -62,7 +70,7 @@ const RecruitmentPage = () => {
               </button>
               
               <button 
-                className={`px-5 py-3 font-medium text-gray-400 hover:text-white relative transition-colors duration-200 ${activeTab === 'positions' ? 'text-white' : ''} focus:outline-none whitespace-nowrap`}
+                className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'positions' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
                 onClick={() => setActiveTab('positions')}
               >
                 <div className="flex items-center">
@@ -73,7 +81,7 @@ const RecruitmentPage = () => {
               </button>
               
               <button 
-                className={`px-5 py-3 font-medium text-gray-400 hover:text-white relative transition-colors duration-200 ${activeTab === 'faq' ? 'text-white' : ''} focus:outline-none whitespace-nowrap`}
+                className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'faq' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
                 onClick={() => setActiveTab('faq')}
               >
                 <div className="flex items-center">
@@ -91,169 +99,174 @@ const RecruitmentPage = () => {
                     <Info className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
                     <div>
                       <h2 className="text-xl font-bold">Frequently Asked Questions</h2>
-                      <p className="text-sm text-gray-400">Common questions about joining the NCSC.</p>
+                      <p className="text-sm text-muted-foreground">Common questions about joining the NCSC.</p>
                     </div>
                   </div>
                   
                   <div className="space-y-6">
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors duration-200">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60 hover:border-border transition-colors duration-200">
                       <h3 className="text-lg font-medium mb-2 text-primary">How long does the application process take?</h3>
-                      <p className="text-gray-300 text-sm">The full recruitment process typically takes 1-2 weeks, depending on the volume of applications and your availability for interviews. Background verification usually takes 1-3 days.</p>
+                      <p className="text-muted-foreground text-sm">The full recruitment process typically takes 1-2 weeks, depending on the volume of applications and your availability for interviews. Background verification usually takes 1-3 days.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors duration-200">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60 hover:border-border transition-colors duration-200">
                       <h3 className="text-lg font-medium mb-2 text-primary">What happens if my application is rejected?</h3>
-                      <p className="text-gray-300 text-sm">If your application is rejected, you will not be contacted. Any attempts to reach out to NCSC Command or personnel will result in an instant denial with a possible blacklist period of 1-3 months.</p>
+                      <p className="text-muted-foreground text-sm">If your application is rejected, you will not be contacted. Any attempts to reach out to NCSC Command or personnel will result in an instant denial with a possible blacklist period of 1-3 months.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors duration-200">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60 hover:border-border transition-colors duration-200">
                       <h3 className="text-lg font-medium mb-2 text-primary">What training will I receive as a new agent?</h3>
-                      <p className="text-gray-300 text-sm">New agents go through a comprehensive training program covering intelligence collection methods, operational security, reporting protocols, and branch-specific skills. Training duration varies by role but typically lasts 1-2 weeks.</p>
+                      <p className="text-muted-foreground text-sm">New agents go through a comprehensive training program covering [REDACTED], [REDACTED], reporting protocols, and branch-specific skills. Training duration varies by role but typically lasts 1-2 weeks.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors duration-200">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60 hover:border-border transition-colors duration-200">
                       <h3 className="text-lg font-medium mb-2 text-primary">Can I apply for multiple positions?</h3>
-                      <p className="text-gray-300 text-sm">No. You may only select one application at a time. Command staff will review your skills and assign you to the position that best fits your abilities and the organization's needs.</p>
+                      <p className="text-muted-foreground text-sm">No. You may only select one application at a time. Command staff will review your skills and assign you to the position that best fits your abilities and the organization's needs.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors duration-200">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60 hover:border-border transition-colors duration-200">
                       <h3 className="text-lg font-medium mb-2 text-primary">What is the time commitment for NCSC agents?</h3>
-                      <p className="text-gray-300 text-sm">NCSC agents are expected to be reasonably active and participate in operations as assigned. The exact time commitment varies by role, but generally requires at least 5-10 hours per week.</p>
+                      <p className="text-muted-foreground text-sm">NCSC agents are expected to be reasonably active and participate in [REDACTED] as assigned. The exact time commitment varies by role, but generally requires at least 5-10 hours per week.</p>
                     </div>
                   </div>
                 </>
               )}
               
               {activeTab === 'process' && (
-                <div className="text-gray-300">
+                <div>
                   <div className="flex items-center mb-6">
                     <FileText className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
                     <div>
                       <h2 className="text-xl font-bold">Recruitment Process</h2>
-                      <p className="text-sm text-gray-400">The NCSC recruitment process is rigorous and selective.</p>
+                      <p className="text-sm text-muted-foreground">The NCSC recruitment process is rigorous and selective.</p>
                     </div>
                   </div>
                   
                   <div className="space-y-6">
-                    <div className="relative pl-8 pb-8 border-l border-gray-800">
+                    <div className="relative pl-8 pb-8 border-l border-border/50">
                       <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary"></div>
                       <h3 className="text-lg font-medium mb-2">Application Submission</h3>
-                      <p className="text-sm text-gray-400">Complete the secure application form with your qualifications and experience. All information provided is subject to verification.</p>
+                      <p className="text-sm text-muted-foreground">Complete the secure application form with your qualifications and experience. All information provided is subject to verification.</p>
                     </div>
                     
-                    <div className="relative pl-8 pb-8 border-l border-gray-800">
-                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                    <div className="relative pl-8 pb-8 border-l border-border/50">
+                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-muted"></div>
                       <h3 className="text-lg font-medium mb-2">Initial Screening</h3>
-                      <p className="text-sm text-gray-400">Applications are reviewed by NCSC Command. Only candidates meeting our strict criteria will proceed to the next phase.</p>
+                      <p className="text-sm text-muted-foreground">Applications are reviewed by NCSC Command. Only candidates meeting our strict criteria will proceed to the next phase.</p>
                     </div>
                     
-                    <div className="relative pl-8 pb-8 border-l border-gray-800">
-                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                    <div className="relative pl-8 pb-8 border-l border-border/50">
+                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-muted"></div>
                       <h3 className="text-lg font-medium mb-2">Background Assessment</h3>
-                      <p className="text-sm text-gray-400">Comprehensive evaluation of candidate history, reliability, and potential security concerns.</p>
+                      <p className="text-sm text-muted-foreground">Comprehensive evaluation of candidate history, reliability, and potential security concerns.</p>
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                      <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-muted"></div>
                       <h3 className="text-lg font-medium mb-2">Final Selection</h3>
-                      <p className="text-sm text-gray-400">Successful candidates are notified and begin the onboarding process. All others receive no communication.</p>
+                      <p className="text-sm text-muted-foreground">Successful candidates are notified and begin the onboarding process. All others receive no communication.</p>
                     </div>
                   </div>
                 </div>
               )}
               
               {activeTab === 'requirements' && (
-                <div className="text-gray-300">
+                <div>
                   <div className="flex items-center mb-6">
                     <Star className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
                     <div>
                       <h2 className="text-xl font-bold">Requirements</h2>
-                      <p className="text-sm text-gray-400">We seek candidates with exceptional skills and dedication.</p>
+                      <p className="text-sm text-muted-foreground">We seek candidates with exceptional skills and dedication.</p>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
                       <h3 className="text-lg font-medium mb-3 flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-blue-900 flex items-center justify-center mr-3 text-white">1</div>
+                        <div className="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center mr-3 text-foreground">1</div>
                         Reliability
                       </h3>
-                      <p className="text-sm text-gray-400">Candidates must demonstrate consistent availability and commitment to assigned operations and tasks.</p>
+                      <p className="text-sm text-muted-foreground">Candidates must demonstrate consistent availability and commitment to assigned [REDACTED] and tasks.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
                       <h3 className="text-lg font-medium mb-3 flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-blue-900 flex items-center justify-center mr-3 text-white">2</div>
+                        <div className="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center mr-3 text-foreground">2</div>
                         Discretion
                       </h3>
-                      <p className="text-sm text-gray-400">Ability to maintain confidentiality and handle sensitive information appropriately is essential.</p>
+                      <p className="text-sm text-muted-foreground">Ability to maintain confidentiality and handle sensitive information appropriately is essential.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
                       <h3 className="text-lg font-medium mb-3 flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-blue-900 flex items-center justify-center mr-3 text-white">3</div>
+                        <div className="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center mr-3 text-foreground">3</div>
                         Analytical Skills
                       </h3>
-                      <p className="text-sm text-gray-400">Candidates should possess strong critical thinking and problem-solving abilities.</p>
+                      <p className="text-sm text-muted-foreground">Candidates should possess strong critical thinking and problem-solving abilities.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
                       <h3 className="text-lg font-medium mb-3 flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-blue-900 flex items-center justify-center mr-3 text-white">4</div>
+                        <div className="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center mr-3 text-foreground">4</div>
                         Communication
                       </h3>
-                      <p className="text-sm text-gray-400">Clear and effective communication skills are required for operational success.</p>
+                      <p className="text-sm text-muted-foreground">Clear and effective communication skills are required for operational success.</p>
                     </div>
                   </div>
                   
-                  <div className="mt-6 p-4 border border-gray-800 rounded-lg bg-gray-900/50">
-                    <p className="text-sm text-gray-400">Additional specialized requirements may apply depending on the specific role and division.</p>
+                  <div className="mt-6 p-4 border border-border/60 rounded-lg bg-secondary/10">
+                    <p className="text-sm text-muted-foreground">Additional specialized requirements may apply depending on the specific role and division.</p>
                   </div>
                 </div>
               )}
               
               {activeTab === 'positions' && (
-                <div className="text-gray-300">
+                <div>
                   <div className="flex items-center mb-6">
                     <User className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
                     <div>
                       <h2 className="text-xl font-bold">Available Positions</h2>
-                      <p className="text-sm text-gray-400">NCSC regularly recruits for various intelligence and security roles.</p>
+                      <p className="text-sm text-muted-foreground">NCSC regularly recruits for various positions.</p>
                     </div>
                   </div>
                   
                   <div className="space-y-6">
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                      <div className="flex justify-between items-start">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
                         <h3 className="text-lg font-medium">Intelligence Analysts</h3>
-                        <span className="px-2 py-0.5 rounded bg-green-900 text-white text-xs">Active Recruiting</span>
+                        <span className="badge badge-active">Active Recruiting</span>
                       </div>
-                      <p className="text-sm text-gray-400 mt-2">Process and analyze intelligence data to identify threats and patterns that support NCSC operations.</p>
+                      <p className="text-sm text-muted-foreground mt-2">Process and analyze [REDACTED] to identify threats and patterns that support NCSC operations.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                      <div className="flex justify-between items-start">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
                         <h3 className="text-lg font-medium">Field Operatives</h3>
-                        <span className="px-2 py-0.5 rounded bg-yellow-900 text-white text-xs">Limited Positions</span>
+                        <span className="badge badge-limited">Limited Positions</span>
                       </div>
-                      <p className="text-sm text-gray-400 mt-2">Conduct direct intelligence gathering and operations in sensitive environments.</p>
+                      <p className="text-sm text-muted-foreground mt-2">Conduct direct [REDACTED] in sensitive environments.</p>
                     </div>
                     
-                    <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                      <div className="flex justify-between items-start">
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
                         <h3 className="text-lg font-medium">Security Specialists</h3>
-                        <span className="px-2 py-0.5 rounded bg-green-900 text-white text-xs">Active Recruiting</span>
+                        <span className="badge badge-active">Active Recruiting</span>
                       </div>
-                      <p className="text-sm text-gray-400 mt-2">Monitor and enforce security protocols and investigate potential security breaches.</p>
+                      <p className="text-sm text-muted-foreground mt-2">Monitor and enforce security protocols and investigate potential security breaches.</p>
                     </div>
                     
-                    <div className="border border-dashed border-gray-700 p-4 rounded-lg">
-                      <div className="flex items-center">
-                        <Lock className="h-5 w-5 text-gray-500 mr-2" />
-                        <h3 className="text-lg font-medium text-gray-500">[Additional positions classified]</h3>
+                    <div className="bg-secondary/20 p-4 rounded-lg border border-border/60">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
+                        <h3 className="text-lg font-medium">[REDACTED] Positions</h3>
+                        <span className="badge badge-classified">Classified</span>
                       </div>
-                      <p className="text-sm text-gray-500 mt-2 italic">Information on specialized roles is available only to candidates with appropriate clearance levels.</p>
+                      <p className="text-sm text-muted-foreground mt-2">Information on specialized roles is <span className="redacted px-2">available only to candidates with appropriate clearance levels</span>.</p>
                     </div>
+                  </div>
+
+                  <div className="mt-6 p-4 border border-border/60 rounded-lg bg-secondary/10 flex items-center">
+                    <AlertTriangle className="h-4 w-4 text-destructive mr-2" />
+                    <p className="text-sm text-muted-foreground">All positions require security clearance and successful completion of NCSC training protocols.</p>
                   </div>
                 </div>
               )}
@@ -261,50 +274,68 @@ const RecruitmentPage = () => {
           </div>
         </div>
         
-        <div>
-          <div className="bg-gray-950 rounded-lg overflow-hidden border border-gray-800 shadow-lg relative sticky top-6">
-            {/* Corner elements */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-primary opacity-30"></div>
-            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-primary opacity-30"></div>
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-primary opacity-30"></div>
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-primary opacity-30"></div>
-            
-            <div className="bg-primary px-4 py-3 flex items-center justify-between">
-              <h2 className="font-medium flex items-center">
-                <Shield className="h-5 w-5 mr-2" />
-                <span>JOIN OUR RANKS</span>
-              </h2>
-              <AlertTriangle className="h-4 w-4" />
-            </div>
-            
+        {/* Application Sidebar */}
+        <div className="lg:col-span-1">
+          <div className="bg-card rounded-lg overflow-hidden border border-border shadow-md modern-card">
             <div className="p-6">
-              <div className="mb-6 flex justify-center">
-                <div className="w-20 h-20 rounded-full border-2 border-primary p-2 flex items-center justify-center">
-                  <Shield className="h-10 w-10 text-primary" />
+              <h2 className="text-xl font-bold mb-4">Join the NCSC</h2>
+              <p className="text-muted-foreground text-sm mb-6">The NCSC is currently accepting applications for qualified individuals. Start your application process today.</p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center">
+                  <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center text-primary">1</div>
+                  <div className="ml-3">
+                    <h3 className="font-medium text-sm">Complete Application</h3>
+                    <p className="text-xs text-muted-foreground">Fill out the secure online form</p>
+                  </div>
+                </div>
+                
+                <div className="border-l-2 border-dashed border-border/40 h-6 ml-4"></div>
+                
+                <div className="flex items-center">
+                  <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center text-primary">2</div>
+                  <div className="ml-3">
+                    <h3 className="font-medium text-sm">Assessment Period</h3>
+                    <p className="text-xs text-muted-foreground">NCSC reviews your application</p>
+                  </div>
+                </div>
+                
+                <div className="border-l-2 border-dashed border-border/40 h-6 ml-4"></div>
+                
+                <div className="flex items-center">
+                  <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center text-primary">3</div>
+                  <div className="ml-3">
+                    <h3 className="font-medium text-sm">Notification</h3>
+                    <p className="text-xs text-muted-foreground">Successful candidates contacted</p>
+                  </div>
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold mb-4 text-center">Ready to Serve?</h3>
-              <p className="mb-6 text-gray-300 text-center">Become part of an elite team protecting digital communities. We're looking for dedicated individuals to join our mission.</p>
-              
-              <div className="mb-6 bg-gray-900 rounded-lg p-4 border border-gray-800">
-                <h4 className="text-sm font-semibold mb-3 flex items-center text-gray-300">
-                  <Info className="h-4 w-4 mr-2 text-primary" />
-                  Application Notice
-                </h4>
-                <p className="text-xs text-gray-400">By proceeding, you acknowledge all information is classified. Unauthorized sharing is prohibited and may result in immediate disqualification.</p>
-              </div>
-              
-              <button 
+              <button
+                className="w-full py-3 button-hover rounded-md font-medium flex items-center justify-center space-x-2"
                 onClick={handleStartApplication}
-                className="w-full py-3 bg-gradient-to-r from-red-900 to-red-800 text-white font-medium rounded-md hover:from-red-800 hover:to-red-700 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
               >
-                <span>START YOUR APPLICATION</span>
-                <ChevronRight className="h-5 w-5" />
+                <span>Start Application</span>
+                <ExternalLink className="h-4 w-4" />
               </button>
               
-              <div className="mt-4 text-xs text-center text-gray-500">
-                Application process takes approximately 10-15 minutes
+              <div className="mt-4 text-xs text-center text-muted-foreground">
+                <p>Application window may close without notice based on recruitment needs</p>
+              </div>
+            </div>
+            
+            {/* Contact Info */}
+            <div className="p-4 bg-secondary/20 border-t border-border/40">
+              <h3 className="font-medium text-sm mb-2">Contact Information:</h3>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <SiDiscord className="h-4 w-4 mr-2 discord-icon" />
+                  <span className="text-xs">Discord: <span className="font-medium">@ncsc_official</span></span>
+                </div>
+                <div className="flex items-center">
+                  <SiRoblox className="h-4 w-4 mr-2 roblox-icon" />
+                  <span className="text-xs">Roblox: <span className="font-medium">@NCSC_Intel</span></span>
+                </div>
               </div>
             </div>
           </div>

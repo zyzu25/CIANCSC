@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import LeadershipCard from './LeadershipCard';
 import { Shield, CornerDownRight } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
 
 interface LeadershipSectionProps {
   title: string;
@@ -28,15 +29,11 @@ const LeadershipSection = ({
   badgeColor, 
   leaders 
 }: LeadershipSectionProps) => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className="mb-12 bg-gray-950 rounded-lg overflow-hidden border border-gray-800 shadow-lg relative">
-      {/* Corner elements */}
-      <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-primary opacity-40"></div>
-      <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-primary opacity-40"></div>
-      <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-primary opacity-40"></div>
-      <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-primary opacity-40"></div>
-      
-      <div className={`${titleBgColor} py-3 px-4 flex items-center border-b border-gray-800`}>
+    <div className="mb-12 bg-card rounded-lg overflow-hidden border border-border shadow-lg relative corner-box">
+      <div className={`${titleBgColor} py-3 px-4 flex items-center border-b border-border`}>
         <Shield className="h-5 w-5 mr-2 text-white" />
         <h3 className="font-bold tracking-wide">{title}</h3>
       </div>
@@ -44,14 +41,14 @@ const LeadershipSection = ({
       <div className="p-6">
         <div className="flex items-start mb-6">
           <CornerDownRight className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-1" />
-          <p className="text-sm text-gray-400">{description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
           {/* Fancy connecting lines between cards */}
           <div className="absolute inset-0 hidden md:block">
-            <div className="w-full h-full border-t border-dashed border-gray-800 opacity-30 transform translate-y-1/2"></div>
-            <div className="h-full w-0 border-l border-dashed border-gray-800 opacity-30 transform translate-x-1/2"></div>
+            <div className="w-full h-full border-t border-dashed border-border opacity-30 transform translate-y-1/2"></div>
+            <div className="h-full w-0 border-l border-dashed border-border opacity-30 transform translate-x-1/2"></div>
           </div>
           
           {leaders.map((leader, index) => (

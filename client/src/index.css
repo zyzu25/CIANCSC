@@ -8,69 +8,81 @@
   }
 
   body {
-    @apply font-mono antialiased bg-black text-white;
+    @apply font-mono antialiased;
   }
 
+  /* Light Mode - Modern GitHub-like Theme */
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 210 14% 98%;
+    --foreground: 214 11% 14%;
     
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
+    --card: 210 14% 97%;
+    --card-foreground: 214 11% 14%;
     
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 210 14% 97%;
+    --popover-foreground: 214 11% 14%;
     
-    --primary: 0 100% 35%;
+    --primary: 212 100% 42%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 0 0% 12%;
+    --secondary: 220 9% 93%;
+    --secondary-foreground: 214 11% 14%;
+    
+    --muted: 220 9% 93%;
+    --muted-foreground: 220 8% 46%;
+    
+    --accent: 271 79% 51%;
+    --accent-foreground: 210 14% 97%;
+    
+    --destructive: 0 73% 53%;
+    --destructive-foreground: 210 14% 97%;
+    
+    --success: 137 56% 40%;
+    
+    --border: 220 9% 80%;
+    --input: 220 9% 85%;
+    --ring: 212 100% 42%;
+    
+    --radius: 0.75rem;
+
+    color-scheme: light;
+  }
+
+  /* Dark Mode - Red Terminal Theme */
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 90%;
+    
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 90%;
+    
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 90%;
+    
+    --primary: 0 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 100% 40%;
     --secondary-foreground: 0 0% 100%;
     
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
     
-    --accent: 0 100% 35%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 5%;
     
-    --destructive: 0 100% 35%;
+    --destructive: 0 100% 40%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 20%;
+    --success: 120 100% 50%;
+    
+    --border: 0 100% 20%;
     --input: 0 0% 15%;
-    --ring: 0 100% 35%;
-    
-    --radius: 0.5rem;
-  }
+    --ring: 0 100% 59%;
 
-  .light-theme {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-    
-    --card: 0 0% 95%;
-    --card-foreground: 0 0% 0%;
-    
-    --popover: 0 0% 95%;
-    --popover-foreground: 0 0% 0%;
-    
-    --primary: 0 100% 35%;
-    --primary-foreground: 0 0% 100%;
-    
-    --secondary: 0 0% 90%;
-    --secondary-foreground: 0 0% 0%;
-    
-    --muted: 0 0% 85%;
-    --muted-foreground: 0 0% 50%;
-    
-    --accent: 0 100% 35%;
-    --accent-foreground: 0 0% 100%;
-    
-    --destructive: 0 100% 35%;
-    --destructive-foreground: 0 0% 100%;
-    
-    --border: 0 0% 80%;
-    --input: 0 0% 85%;
-    --ring: 0 100% 35%;
+    --radius: 0.5rem;
+
+    color-scheme: dark;
   }
 
   /* Redacted text styling with realistic look */
@@ -178,26 +190,88 @@
   /* Terminal text effect */
   .terminal-text {
     font-family: 'Courier New', monospace;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .dark .terminal-text {
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 0 0 5px rgba(179, 0, 0, 0.5);
-    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Light/Dark mode theme specific styling */
+  .theme-light {
+    @apply bg-background text-foreground;
+  }
+  
+  .theme-dark {
+    @apply bg-background text-foreground;
+  }
+
+  /* Modern card component */
+  .modern-card {
+    @apply rounded-xl shadow-md border border-border/40 p-5 bg-card transition-all duration-300;
+  }
+  
+  .dark .modern-card {
+    @apply bg-card/90 border-border/20 shadow-lg shadow-primary/5;
+  }
+  
+  /* Modern section styling */
+  .modern-section {
+    @apply py-8 px-4;
+  }
+  
+  /* Modern header */
+  .modern-header {
+    @apply text-2xl font-semibold mb-6 relative flex items-center;
+  }
+  
+  .modern-header::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 h-1 w-12 bg-primary rounded-full;
+  }
+  
+  /* Badge styling for positions */
+  .badge {
+    @apply px-3 py-1 text-xs font-medium rounded-full whitespace-nowrap;
+  }
+  
+  .badge-active {
+    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+  }
+  
+  .badge-limited {
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  
+  .badge-classified {
+    @apply bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400;
   }
 
   /* Enhanced hover effects */
   .card-hover {
-    @apply transition-all duration-300;
-    box-shadow: 0 0 0 rgba(179, 0, 0, 0);
+    @apply transition-all duration-300 bg-card border border-border/40;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .card-hover:hover {
     @apply transform -translate-y-[3px];
-    box-shadow: 0 10px 25px rgba(179, 0, 0, 0.2), 0 0 15px rgba(179, 0, 0, 0.1);
-    border-color: rgba(179, 0, 0, 0.7);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: hsl(var(--primary)/30%);
+  }
+  
+  .dark .card-hover {
+    box-shadow: 0 0 0 rgba(255, 42, 42, 0);
+  }
+  
+  .dark .card-hover:hover {
+    box-shadow: 0 10px 25px rgba(255, 42, 42, 0.2), 0 0 15px rgba(255, 42, 42, 0.1);
+    border-color: rgba(255, 42, 42, 0.4);
   }
 
   /* Enhanced button hover effect */
   .button-hover {
-    @apply transition-all duration-300 relative overflow-hidden;
+    @apply transition-all duration-300 relative overflow-hidden bg-primary text-primary-foreground;
   }
 
   .button-hover::after {
@@ -212,8 +286,12 @@
   }
 
   .button-hover:hover {
-    @apply bg-[#ff4d4d] shadow-[0_4px_15px_rgba(255,77,77,0.4)];
+    @apply bg-primary/90 shadow-md shadow-primary/20;
     transform: translateY(-2px);
+  }
+  
+  .dark .button-hover:hover {
+    @apply bg-[#ff2a2a] shadow-[0_4px_15px_rgba(255,42,42,0.3)];
   }
 
   .button-hover:hover::after {
@@ -230,21 +308,29 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    border-color: rgba(179, 0, 0, 0.7);
   }
   
   .corner-box::before {
     top: 0;
     left: 0;
-    border-top: 2px solid;
-    border-left: 2px solid;
+    border-top: 2px solid hsl(var(--primary));
+    border-left: 2px solid hsl(var(--primary));
   }
   
   .corner-box::after {
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid;
-    border-right: 2px solid;
+    border-bottom: 2px solid hsl(var(--primary));
+    border-right: 2px solid hsl(var(--primary));
+  }
+  
+  /* Platform Icons */
+  .discord-icon {
+    @apply text-[#5865F2];
+  }
+  
+  .roblox-icon {
+    @apply text-[#00A2FF];
   }
   
   /* Rotating security badge */
@@ -267,5 +353,48 @@
   
   .delay-300 {
     animation-delay: 0.3s;
+  }
+  
+  /* Loading screen specific styles */
+  .loading-screen {
+    @apply fixed top-0 left-0 w-full h-full z-50 flex flex-col items-center justify-center overflow-hidden;
+  }
+  
+  .dark .loading-screen {
+    @apply bg-black;
+  }
+  
+  .light .loading-screen {
+    @apply bg-background;
+  }
+  
+  /* Modern classified document styling */
+  .classified-document {
+    @apply border-2 rounded-lg p-5 bg-card/50;
+  }
+  
+  .dark .classified-document {
+    @apply border-secondary bg-black/50;
+  }
+  
+  .light .classified-document {
+    @apply border-gray-200 bg-white/80;
+  }
+  
+  /* Classified watermark styling */
+  .watermark {
+    @apply fixed inset-0 pointer-events-none flex items-center justify-center opacity-[0.03] -z-10 overflow-hidden;
+    transform: rotate(-45deg);
+    font-size: 120px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .dark .watermark {
+    @apply text-primary;
+  }
+  
+  .light .watermark {
+    @apply text-primary/50;
   }
 }

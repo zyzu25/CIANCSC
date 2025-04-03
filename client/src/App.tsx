@@ -8,11 +8,14 @@ import AboutPage from "./components/AboutPage";
 import RecruitmentPage from "./components/RecruitmentPage";
 import SecurityNoticeModal from "./components/SecurityNoticeModal";
 import ClassifiedWatermark from "./components/ClassifiedWatermark";
+import { ThemeProvider } from "./hooks/useTheme";
+import { SunMoon } from "lucide-react";
 
 // Configuration for the application
 const CONFIG = {
-  // Loading screen duration in milliseconds
-  LOADING_DURATION: 3000,
+  // Loading screen duration in milliseconds (random between 7-10 seconds)
+  MIN_LOADING_DURATION: 7000,
+  MAX_LOADING_DURATION: 10000,
   
   // Keep-alive ping interval in milliseconds (5 minutes)
   KEEP_ALIVE_INTERVAL: 5 * 60 * 1000,
@@ -22,7 +25,17 @@ const CONFIG = {
   
   // Maximum number of reconnection attempts
   MAX_RECONNECT_ATTEMPTS: 3,
+  
+  // Google Form application URL
+  APPLICATION_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdVED14zX66oVHsRudvO4iwvxdmKIEvj45ym3PTjVj2ROkZyA/viewform?usp=sharing"
 }
+
+// Get a random loading duration between MIN and MAX
+const getRandomLoadingDuration = () => {
+  return Math.floor(Math.random() * 
+    (CONFIG.MAX_LOADING_DURATION - CONFIG.MIN_LOADING_DURATION + 1)) + 
+    CONFIG.MIN_LOADING_DURATION;
+};
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +44,7 @@ function App() {
   const [appStatus, setAppStatus] = useState<"online" | "connecting" | "offline">("online");
   const reconnectAttemptsRef = useRef(0);
   const lastActivityRef = useRef(Date.now());
+  const loadingDurationRef = useRef(getRandomLoadingDuration());
   
   // Navigation handlers
   const navigateToAbout = () => {
@@ -49,11 +63,19 @@ function App() {
     lastActivityRef.current = Date.now(); // Update last activity timestamp
   };
 
-  // Simulate loading screen
+  // Handle external application form link
+  const handleApplicationClick = () => {
+    window.open(CONFIG.APPLICATION_FORM_URL, '_blank', 'noopener,noreferrer');
+    lastActivityRef.current = Date.now(); // Update last activity timestamp
+  };
+
+  // Simulate loading screen with random duration
   useEffect(() => {
+    console.log(`[NCSC System] Loading screen will show for ${loadingDurationRef.current/1000} seconds`);
+    
     const timer = setTimeout(() => {
       setLoading(false);
-    }, CONFIG.LOADING_DURATION);
+    }, loadingDurationRef.current);
 
     return () => clearTimeout(timer);
   }, []);
@@ -120,48 +142,55 @@ function App() {
     };
   }, [appStatus]);
 
-  // Add a scanline effect for the UI
+  // Add a scanline effect for the dark theme UI only
   const scanlineEffect = (
-    <div className="scanline"></div>
+    <div className="dark:block hidden">
+      <div className="scanline"></div>
+    </div>
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* <!-- CLASSIFIED --> */}
-      <ClassifiedWatermark />
-      {scanlineEffect}
-      
-      {loading ? (
-        <LoadingScreen />
-      ) : (
-        <>
-          <Layout 
-            navigateToAbout={navigateToAbout} 
-            navigateToRecruitment={navigateToRecruitment}
-          >
-            {currentPage === "about" ? <AboutPage /> : <RecruitmentPage />}
-          </Layout>
-          
-          {showSecurityModal && (
-            <SecurityNoticeModal onAgree={handleSecurityAgreement} />
-          )}
-          
-          {/* Status indicator - only shown when there are connection issues */}
-          {appStatus !== "online" && (
-            <div className={`fixed bottom-4 right-4 px-3 py-1.5 rounded-md text-xs font-mono z-50 flex items-center space-x-2 ${
-              appStatus === "connecting" ? "bg-yellow-900 text-white" : "bg-red-900 text-white"
-            }`}>
-              <div className={`h-2 w-2 rounded-full ${
-                appStatus === "connecting" ? "bg-yellow-500 animate-pulse" : "bg-red-500"
-              }`}></div>
-              <span>{appStatus === "connecting" ? "Reconnecting..." : "Connection lost"}</span>
-            </div>
-          )}
-        </>
-      )}
-      
-      <Toaster />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        {/* <!-- CLASSIFIED --> */}
+        <ClassifiedWatermark />
+        {scanlineEffect}
+        
+        {loading ? (
+          <LoadingScreen />
+        ) : (
+          <>
+            <Layout 
+              navigateToAbout={navigateToAbout} 
+              navigateToRecruitment={navigateToRecruitment}
+              onApplicationClick={handleApplicationClick}
+            >
+              {currentPage === "about" ? <AboutPage /> : <RecruitmentPage applicationUrl={CONFIG.APPLICATION_FORM_URL} />}
+            </Layout>
+            
+            {showSecurityModal && (
+              <SecurityNoticeModal onAgree={handleSecurityAgreement} />
+            )}
+            
+            {/* Status indicator - only shown when there are connection issues */}
+            {appStatus !== "online" && (
+              <div className={`fixed bottom-4 right-4 px-3 py-1.5 rounded-md text-xs font-mono z-50 flex items-center space-x-2 ${
+                appStatus === "connecting" 
+                  ? "bg-yellow-900/80 text-white dark:bg-yellow-900/80" 
+                  : "bg-destructive/80 text-white dark:bg-destructive/80"
+              }`}>
+                <div className={`h-2 w-2 rounded-full ${
+                  appStatus === "connecting" ? "bg-yellow-500 animate-pulse" : "bg-red-500"
+                }`}></div>
+                <span>{appStatus === "connecting" ? "Reconnecting..." : "Connection lost"}</span>
+              </div>
+            )}
+          </>
+        )}
+        
+        <Toaster />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 
