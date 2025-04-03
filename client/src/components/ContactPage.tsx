@@ -338,27 +338,13 @@ const ContactPage: React.FC = () => {
 
                     <FormField
                       control={recruitmentForm.control}
-                      name="age"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Age (Must be 14+)</FormLabel>
-                          <FormControl>
-                            <Input type="number" min="14" placeholder="Your Age" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={recruitmentForm.control}
                       name="statement"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Brief Statement</FormLabel>
                           <FormControl>
                             <Textarea 
-                              placeholder="Describe your relevant skills and why you wish to join the NCSC..." 
+                              placeholder="Describe your issue..." 
                               className="min-h-[120px]"
                               {...field} 
                             />

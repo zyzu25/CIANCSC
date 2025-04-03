@@ -47,10 +47,7 @@ export const threatReportSchema = z.object({
 
 export const recruitmentSchema = z.object({
   discordUsername: z.string().min(1, "Discord username is required"),
-  age: z.string()
-    .min(1, "Age is required")
-    .refine((val) => parseInt(val) >= 14, "You must be at least 14 years old"),
-  statement: z.string().min(20, "Please provide a brief statement about why you want to join"),
+  statement: z.string().min(20, "Please provide a brief statement about your issue"),
 });
 
 export const feedbackSchema = z.object({
