@@ -69,16 +69,7 @@ const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1
                 {activeTab === 'requirements' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>}
               </button>
               
-              <button 
-                className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'positions' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
-                onClick={() => setActiveTab('positions')}
-              >
-                <div className="flex items-center">
-                  <User className="h-4 w-4 mr-2" />
-                  <span>Available Positions</span>
-                </div>
-                {activeTab === 'positions' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>}
-              </button>
+
               
               <button 
                 className={`px-5 py-3 font-medium text-foreground/70 hover:text-foreground relative transition-colors duration-200 ${activeTab === 'faq' ? 'text-foreground' : ''} focus:outline-none whitespace-nowrap`}
@@ -315,7 +306,7 @@ const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1
                 className="w-full py-3 button-hover rounded-md font-medium flex items-center justify-center space-x-2"
                 onClick={handleRecruitmentInquiry}
               >
-                <span>Recruitment Inquiry</span>
+                <span>Apply Here</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
               
@@ -324,16 +315,7 @@ const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1
               </div>
             </div>
             
-            {/* Contact Info */}
-            <div className="p-4 bg-secondary/20 border-t border-border/40">
-              <h3 className="font-medium text-sm mb-2">Contact Information:</h3>
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <SiDiscord className="h-4 w-4 mr-2 discord-icon" />
-                  <span className="text-xs">Discord: <span className="font-medium">@ncsc_official</span></span>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

@@ -329,10 +329,6 @@
     @apply text-[#5865F2];
   }
   
-  .roblox-icon {
-    @apply text-[#00A2FF];
-  }
-  
   /* Rotating security badge */
   .rotating-badge {
     animation: rotation 20s linear infinite;

@@ -1,6 +1,7 @@
-import { Shield, Lock, AlertTriangle, Mail } from 'lucide-react';
+import { Lock, AlertTriangle, Mail } from 'lucide-react';
 import { SiDiscord } from "react-icons/si";
 import { useTheme } from "../hooks/useTheme";
+import ncscLogo from "../assets/ncsc-logo.png";
 
 const Footer = () => {
   const { isDark } = useTheme();
@@ -14,7 +15,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="flex items-center mb-4 md:mb-0">
-            <Shield className="h-5 w-5 text-primary mr-2" />
+            <img src={ncscLogo} alt="NCSC Logo" className="h-8 w-8 mr-2" />
             <span className="text-sm font-bold tracking-wider">NCSC INTELLIGENCE HUB</span>
           </div>
           
@@ -36,17 +37,7 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Platform links */}
-        <div className="flex justify-center space-x-8 mb-8">
-          <div className="flex items-center">
-            <SiDiscord className="h-5 w-5 mr-2 discord-icon" />
-            <span className="text-sm">Discord: <span className="font-medium">@ncsc_official</span></span>
-          </div>
-          <div className="flex items-center">
-            <Mail className="h-5 w-5 mr-2" />
-            <span className="text-sm">Email: <span className="font-medium">contact@ncsc-intelligence.gov</span></span>
-          </div>
-        </div>
+
         
         {/* Security classification bar */}
         <div className="border-t border-border/50 pt-4 pb-1 flex flex-col sm:flex-row justify-between items-center">

@@ -1,8 +1,9 @@
 import { ReactNode, useState, useEffect } from "react";
-import { RefreshCw, Lock, Shield, AlertTriangle, FileText, Moon, Sun, ExternalLink, MailIcon } from "lucide-react";
-import { SiDiscord, SiRoblox } from "react-icons/si";
+import { RefreshCw, Lock, AlertTriangle, FileText, Moon, Sun, ExternalLink, MailIcon } from "lucide-react";
+import { SiDiscord } from "react-icons/si";
 import Footer from "./Footer";
 import { useTheme } from "../hooks/useTheme";
+import ncscLogo from "../assets/ncsc-logo.png";
 
 interface LayoutProps {
   children: ReactNode;
@@ -60,8 +61,8 @@ const Layout = ({ children, navigateToAbout, navigateToRecruitment, navigateToCo
             </button>
             
             <a href="#" className="text-foreground font-bold flex items-center">
-              <div className="h-8 w-8 dark:bg-black bg-white rounded-full border border-primary mr-2 flex items-center justify-center">
-                <Shield className="h-4 w-4 text-primary" />
+              <div className="h-10 w-10 mr-2 flex items-center justify-center">
+                <img src={ncscLogo} alt="NCSC Logo" className="h-full w-full" />
               </div>
               <span className="font-mono tracking-wide text-sm md:text-base">NATIONAL COUNTERINTELLIGENCE & SECURITY CENTER</span>
             </a>

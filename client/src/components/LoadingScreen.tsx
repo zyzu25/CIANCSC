@@ -171,17 +171,7 @@ const LoadingScreen = () => {
         </div>
       </div>
       
-      {/* Platform Icons - shows in both themes */}
-      <div className="mb-8 flex justify-center space-x-6">
-        <div className="flex items-center">
-          <SiDiscord className="h-4 w-4 mr-1.5 discord-icon" />
-          <span className="text-xs text-muted-foreground">Discord: <span className="text-foreground">@ncsc_official</span></span>
-        </div>
-        <div className="flex items-center">
-          <Mail className="h-4 w-4 mr-1.5" />
-          <span className="text-xs text-muted-foreground">Email: <span className="text-foreground">contact@ncsc-intelligence.gov</span></span>
-        </div>
-      </div>
+
       
       {/* System log messages */}
       <div className="absolute bottom-6 left-6 right-6 text-xs text-muted-foreground font-mono terminal-text">
