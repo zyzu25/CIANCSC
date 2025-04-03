@@ -3,6 +3,7 @@ import MissionArea from "./MissionArea";
 import LeadershipSection from "./LeadershipSection";
 import { useTheme } from "../hooks/useTheme";
 import ClassifiedWatermark from "./ClassifiedWatermark";
+import ncscLogoPath from "../assets/NCSC.png";
 
 const AboutPage = () => {
   const { isDark } = useTheme();
@@ -23,14 +24,14 @@ const AboutPage = () => {
       <div className="mb-12 bg-card rounded-lg p-6 border border-border shadow-lg classified-document">
         <div className="flex items-start">
           <div className="hidden md:block mr-6 flex-shrink-0">
-            <div className="w-28 h-28 rounded-full border-2 border-primary p-1 flex items-center justify-center rotation-reverse">
-              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-24 w-24" />
+            <div className="w-28 h-28 rounded-full border-2 border-primary p-1 flex items-center justify-center">
+              <img src={ncscLogoPath} alt="NCSC Logo" className="h-24 w-24" />
             </div>
           </div>
           
           <div>
             <h2 className="text-2xl font-bold mb-4 flex items-center">
-              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-5 w-5 mr-2 md:hidden" />
+              <img src={ncscLogoPath} alt="NCSC Logo" className="h-5 w-5 mr-2 md:hidden" />
               About NCSC
             </h2>
             <p className="mb-4 leading-relaxed">
