@@ -33,7 +33,7 @@ const LeadershipSection = ({
     <div className="mb-12 bg-card rounded-lg overflow-hidden border border-border shadow-lg relative corner-box">
       <div className={`${titleBgColor} py-3 px-4 flex items-center border-b border-border`}>
         <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-5 w-5 mr-2" />
-        <h3 className="font-bold tracking-wide">{title === "Intelligence Operations" ? "[REDACTED]" : title}</h3>
+        <h3 className="font-bold tracking-wide">{title}</h3>
       </div>
       
       <div className="p-6">

@@ -169,13 +169,13 @@ const AboutPage = () => {
         
         {/* Classified Division */}
         <LeadershipSection
-          title="Intelligence Operations"
+          title="REDACTED"
           description="[CONTENT REDACTED BY SECURITY DIRECTIVE 7734-C]"
           titleBgColor="bg-gradient-to-r from-red-900 to-red-950"
           badgeColor="bg-red-900"
           leaders={[
             {
-              role: "Operations Director",
+              role: "REDACTED",
               name: "[REDACTED]",
               discord: "[REDACTED]",
               isRedacted: true,
@@ -183,7 +183,7 @@ const AboutPage = () => {
               discordLabel: "Discord:"
             },
             {
-              role: "Special Operations Lead",
+              role: "REDACTED",
               name: "[REDACTED]",
               discord: "[REDACTED]",
               isRedacted: true,
