@@ -5,6 +5,7 @@ import { useTheme } from "../hooks/useTheme";
 import ClassifiedWatermark from "./ClassifiedWatermark";
 import ncscLogoPath from "../assets/NCSC.png";
 import directorOfIntelligenceImage from "../assets/director-of-intelligence.png";
+import deputyDirectorOfIntelligenceImage from "../assets/deputy-director-of-intelligence.png";
 
 const AboutPage = () => {
   const { isDark } = useTheme();
@@ -113,7 +114,8 @@ const AboutPage = () => {
               name: "wassup_werq",
               discord: "wassup_werq",
               initials: "WW",
-              discordLabel: "Discord:"
+              discordLabel: "Discord:",
+              profileImage: deputyDirectorOfIntelligenceImage
             }
           ]}
         />

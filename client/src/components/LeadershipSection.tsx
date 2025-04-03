@@ -20,6 +20,7 @@ interface LeadershipSectionProps {
     discord: string;
     vacant?: boolean;
     initials?: string;
+    profileImage?: string;
   }[];
 }
 
@@ -75,6 +76,7 @@ const LeadershipSection = ({
               initials={leader.initials}
               nameLabel={leader.nameLabel || "Name:"}
               discordLabel={leader.discordLabel || "Discord:"}
+              profileImage={leader.profileImage}
             />
           ))}
         </div>
