@@ -6,6 +6,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import Layout from "./components/Layout";
 import AboutPage from "./components/AboutPage";
 import RecruitmentPage from "./components/RecruitmentPage";
+import ContactPage from "./components/ContactPage";
 import SecurityNoticeModal from "./components/SecurityNoticeModal";
 import ClassifiedWatermark from "./components/ClassifiedWatermark";
 import { ThemeProvider } from "./hooks/useTheme";
@@ -39,7 +40,7 @@ const getRandomLoadingDuration = () => {
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState<"about" | "recruitment">("about");
+  const [currentPage, setCurrentPage] = useState<"about" | "recruitment" | "contact">("about");
   const [showSecurityModal, setShowSecurityModal] = useState(false);
   const [appStatus, setAppStatus] = useState<"online" | "connecting" | "offline">("online");
   const reconnectAttemptsRef = useRef(0);
@@ -54,6 +55,11 @@ function App() {
 
   const navigateToRecruitment = () => {
     setShowSecurityModal(true);
+    lastActivityRef.current = Date.now(); // Update last activity timestamp
+  };
+  
+  const navigateToContact = () => {
+    setCurrentPage("contact");
     lastActivityRef.current = Date.now(); // Update last activity timestamp
   };
 
@@ -163,9 +169,16 @@ function App() {
             <Layout 
               navigateToAbout={navigateToAbout} 
               navigateToRecruitment={navigateToRecruitment}
+              navigateToContact={navigateToContact}
               onApplicationClick={handleApplicationClick}
             >
-              {currentPage === "about" ? <AboutPage /> : <RecruitmentPage applicationUrl={CONFIG.APPLICATION_FORM_URL} />}
+              {currentPage === "about" ? (
+                <AboutPage />
+              ) : currentPage === "recruitment" ? (
+                <RecruitmentPage applicationUrl={CONFIG.APPLICATION_FORM_URL} />
+              ) : (
+                <ContactPage />
+              )}
             </Layout>
             
             {showSecurityModal && (

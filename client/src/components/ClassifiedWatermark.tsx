@@ -1,11 +1,15 @@
 import { useTheme } from "../hooks/useTheme";
 
-const ClassifiedWatermark = () => {
+interface ClassifiedWatermarkProps {
+  text?: string;
+}
+
+const ClassifiedWatermark = ({ text = "CLASSIFIED" }: ClassifiedWatermarkProps) => {
   const { isDark } = useTheme();
   
   return (
     <div className="watermark">
-      CLASSIFIED
+      {text}
     </div>
   );
 };

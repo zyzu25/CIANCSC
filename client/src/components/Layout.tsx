@@ -1,5 +1,5 @@
 import { ReactNode, useState, useEffect } from "react";
-import { RefreshCw, Lock, Shield, AlertTriangle, FileText, Moon, Sun, ExternalLink } from "lucide-react";
+import { RefreshCw, Lock, Shield, AlertTriangle, FileText, Moon, Sun, ExternalLink, MailIcon } from "lucide-react";
 import { SiDiscord, SiRoblox } from "react-icons/si";
 import Footer from "./Footer";
 import { useTheme } from "../hooks/useTheme";
@@ -8,10 +8,11 @@ interface LayoutProps {
   children: ReactNode;
   navigateToAbout: () => void;
   navigateToRecruitment: () => void;
+  navigateToContact: () => void;
   onApplicationClick?: () => void;
 }
 
-const Layout = ({ children, navigateToAbout, navigateToRecruitment, onApplicationClick }: LayoutProps) => {
+const Layout = ({ children, navigateToAbout, navigateToRecruitment, navigateToContact, onApplicationClick }: LayoutProps) => {
   const { theme, toggleTheme, isDark } = useTheme();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [navHovered, setNavHovered] = useState("");
@@ -96,6 +97,19 @@ const Layout = ({ children, navigateToAbout, navigateToRecruitment, onApplicatio
               </div>
             </button>
             
+            <button 
+              onClick={navigateToContact} 
+              onMouseEnter={() => setNavHovered("contact")}
+              onMouseLeave={() => setNavHovered("")}
+              className="text-foreground/90 px-3 py-1.5 hover:text-foreground transition-colors rounded-md relative overflow-hidden"
+            >
+              <span className={`absolute inset-0 bg-primary ${navHovered === "contact" ? "opacity-10" : "opacity-0"} transition-opacity`}></span>
+              <div className="flex items-center">
+                <span>Contact</span>
+                <MailIcon className="h-3 w-3 ml-1" />
+              </div>
+            </button>
+            
             {onApplicationClick && (
               <button 
                 onClick={onApplicationClick}
@@ -143,14 +157,9 @@ const Layout = ({ children, navigateToAbout, navigateToRecruitment, onApplicatio
       
       {/* Platform Icons bar in dark mode only */}
       <div className="dark:block hidden bg-black/90 py-1.5 border-b border-primary/20">
-        <div className="container mx-auto px-4 flex justify-center space-x-6">
+        <div className="container mx-auto px-4 flex justify-center">
           <div className="flex items-center">
-            <SiDiscord className="h-4 w-4 mr-1.5 discord-icon" />
-            <span className="text-xs text-gray-400">Discord: <span className="text-white">@ncsc_official</span></span>
-          </div>
-          <div className="flex items-center">
-            <SiRoblox className="h-4 w-4 mr-1.5 roblox-icon" />
-            <span className="text-xs text-gray-400">Roblox: <span className="text-white">@NCSC_Intel</span></span>
+            <span className="text-xs text-gray-400">For inquiries, use the <span className="text-white">Contact</span> page</span>
           </div>
         </div>
       </div>
