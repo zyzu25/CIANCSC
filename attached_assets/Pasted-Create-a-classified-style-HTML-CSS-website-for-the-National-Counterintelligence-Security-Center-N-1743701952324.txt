@@ -1,0 +1,59 @@
+Create a classified-style HTML/CSS website for the National Counterintelligence & Security Center (NCSC) with EXACTLY these elements:
+
+# STRUCTURE
+1. **Loading Screen** (3s duration)
+   - Black background with red accents
+   - Centered NCSC logo placeholder (white outline)
+   - "NCSC Intelligence Hub" title below logo
+   - Animated loading bar with rotating facts:
+     * "Founded 2023 under USDCE jurisdiction"
+     * "HUMINT operates under CIA Intelligence Directorate"
+     * "4 active units: Command Center, NCSCIA || Intelligence Agents, [REDACTED], [REDACTED]"
+
+2. **About Page** (Match About1.png exactly)
+   - Header: "# NCSC Intel Hub" + "## National Cyber Security Command"
+   - Content sections:
+     * "Founded in 2023" paragraph (use mission text verbatim)
+     * Mission Areas checklist (copy Threat Monitoring/Secure Comm boxes exactly)
+   - Leadership sections (styled like Screenshot_2.png with colored dividers):
+     ```markdown
+     ## Intelligence Directorate
+     - Director: **afouttggjr** | Discoct: afouttttt
+     - Deputy: **wassup_werq** | Robooc: iifirebunn41265
+
+     ## NCSC Command
+     - Director: **Sodalmpratus5** | Robooc: cd_xdawn [BLACK PFP]
+     - Deputy: **Classified_891** | Robooc: classified_891 [BLACK PFP]
+
+     ## HUMINT (CIA Intelligence Directorate)
+     - Director: **Classified_891** [BLACK PFP]
+     - Deputy: **VACANT** [BLACK PFP]
+     ```
+
+3. **Recruitment Page**
+   - SECURITY NOTICE popup (copy Screenshot_12.png verbatim) before page loads
+   - FAQ section (use Screenshot_6.png text with these edits):
+     * Rejection policy: "No notifications sent. Contact attempts result in 1-3 month blacklist"
+     * Training duration: "1-2 weeks"
+   - "Ready to Serve" section styled like Screenshot_11.png
+     - Red "SECURITY NOTICE" header bar
+     - "[Start Your Application]" button linking to Google Form
+
+# DESIGN SPECS
+- **Color Scheme**: #000000 (background), #b30000 (accents), #ffffff (text)
+- **Font**: 'Courier New' monospace
+- **Animations**:
+  - Buttons: 0.2s fade to #ff4d4d + subtle shadow
+  - Cards: 3px lift on hover + red border glow
+- **Classified Elements**:
+  - Redacted black boxes for PFPs
+  - "⚠️ RESTRICTED ACCESS" watermarks
+  - "USDCE EYES ONLY" footer tags
+
+# IMPORTANT
+- Use placeholder logos (square black/red designs)
+- NO deviations from screenshot layouts
+- All typos preserved ("Discoct", "Robooc", etc.)
+- Add <!-- CLASSIFIED --> HTML comments
+
+Output: Single HTML file with embedded CSS that perfectly replicates the classified aesthetic from all reference images.
