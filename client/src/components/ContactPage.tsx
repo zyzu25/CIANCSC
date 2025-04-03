@@ -358,7 +358,7 @@ const ContactPage: React.FC = () => {
                           <FormLabel>Brief Statement</FormLabel>
                           <FormControl>
                             <Textarea 
-                              placeholder="Explain why you want to join NCSC and what skills you can contribute..." 
+                              placeholder="Describe your relevant skills and why you wish to join the NCSC..." 
                               className="min-h-[120px]"
                               {...field} 
                             />
@@ -378,7 +378,7 @@ const ContactPage: React.FC = () => {
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                           Submitting...
                         </>
-                      ) : "Submit Recruitment Inquiry"}
+                      ) : "Apply Here"}
                     </Button>
                   </form>
                 </Form>
