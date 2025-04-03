@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-mono antialiased bg-black text-white;
+  }
+
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 0 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 0 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 100% 35%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 100% 35%;
+    
+    --radius: 0.25rem;
+  }
+
+  .light-theme {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    
+    --card: 0 0% 95%;
+    --card-foreground: 0 0% 0%;
+    
+    --popover: 0 0% 95%;
+    --popover-foreground: 0 0% 0%;
+    
+    --primary: 0 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 0%;
+    
+    --muted: 0 0% 85%;
+    --muted-foreground: 0 0% 50%;
+    
+    --accent: 0 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 100% 35%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 80%;
+    --input: 0 0% 85%;
+    --ring: 0 100% 35%;
+  }
+
+  .redacted {
+    @apply bg-black text-transparent select-none;
+  }
+
+  @keyframes loader {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  @keyframes typingEffect {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .loader-bar {
+    @apply h-1 bg-primary;
+    width: 0%;
+    animation: loader 3s linear forwards;
+  }
+
+  .typing-text {
+    @apply overflow-hidden whitespace-nowrap;
+    border-right: 3px solid hsl(var(--primary));
+    animation: 
+      typingEffect 3s steps(40) 1s 1 normal both,
+      blink 1s step-end infinite;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+
+  .card-hover:hover {
+    @apply transform -translate-y-[3px] shadow-[0_0_15px_rgba(179,0,0,0.7)] border-primary;
+  }
+
+  .button-hover {
+    @apply transition-all duration-200;
+  }
+
+  .button-hover:hover {
+    @apply bg-[#ff4d4d] shadow-[0_4px_12px_rgba(255,77,77,0.3)];
+  }
+}

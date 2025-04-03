@@ -1,0 +1,38 @@
+make section for each leadership Like (HUMINT Director and Deputy Direct) in one and NCSC Director and Deputy in a separate one and Intelligence director and deputy in separate one. Each one in a section with colors like how shown here: in image screenshot 2.png. 
+
+
+Also make it so whenever people go to recruitment page they get the exact same warning shown in the following image: Screenshot_12.png.
+
+Say we only have 4 units, Command center, NCSCIA || Intelligence Agents and the rest is redacted. Also say that we also have HUMINT which is not within NCSC but under Intelligence Directorate within CIA and keep it in separate one.
+
+### **A. Animations**
+1. **Button Hovers**
+   - 0.2s fade to accent color
+   - Subtle drop shadow
+
+2. **Card Interactions**
+   - Lift effect on hover
+   - Border glow on selection
+
+Put placeholder logos until I send the logos of intelligence directorate and NCSC
+
+NCSC's Mission: The National Counterintelligence and Security Center (NCSC) operates as the leading authority within the USDCE, specializing in high-profile investigations that impact the integrity of the community, including key leadership and command structures.
+
+Goal: Find corrupt HICOM and more that's redacted.
+
+Make loading screen with NCSC Logo in middle and NCSC Title below it and loading bar and facts about NCSC and Intelligence Directorate within CIA. From what you know about us however don't include anything classified.
+
+For FAQ: use the ones in the screenshot_6.png with the following edit:
+
+If application is rejected they don't get contacted and if they try to reach out for any NCSC Command or personnel it will instantly get denied with a possible blacklist that ranges between 1-3 months.
+
+and change start your application part in the screenshot_6.png at the bottom with the theme of screenshot_11.png.
+
+For about us page make it look like About1.png one but with some enhancements to fit the theme. and with title I said etc.
+
+
+Example of loading screen in image.png but NOT the same.
+
+
+
+MAKE A GREAT PROMPT TELLING REPLIT AI TO DO ALL THIS SHIT
