@@ -118,26 +118,14 @@ const LoadingScreen = () => {
         {/* Inner rotating ring */}
         <div className="absolute inset-4 rounded-full border border-dashed border-primary opacity-20 rotation-reverse"></div>
         
-        <svg width="130" height="130" xmlns="http://www.w3.org/2000/svg">
-          {/* Logo differs between dark and light mode */}
-          <circle cx="65" cy="65" r="60" className="fill-card" stroke="hsl(var(--primary))" strokeWidth="3"/>
-          <circle cx="65" cy="65" r="50" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.6"/>
-          <text x="65" y="70" fontFamily="Courier New" fontSize="16" fontWeight="bold" className="fill-foreground" textAnchor="middle">NCSC</text>
-          <path d="M65 15 A50 50 0 0 1 65 115 A50 50 0 0 1 65 15" fill="none" className="stroke-foreground" strokeWidth="0.5" strokeDasharray="3,3"/>
-          
-          {/* Add small dots around the circle */}
-          {Array.from({length: 12}).map((_, i) => {
-            const angle = (i * 30) * Math.PI / 180;
-            const x = 65 + 60 * Math.cos(angle);
-            const y = 65 + 60 * Math.sin(angle);
-            return <circle key={i} cx={x} cy={y} r="1.5" fill={i % 3 === 0 ? "hsl(var(--primary))" : "hsl(var(--foreground))"} />;
-          })}
-        </svg>
+        <div className="w-full h-full flex items-center justify-center">
+          <img src="/src/assets/NCSC.png" alt="NCSC Logo" className="w-24 h-24" />
+        </div>
       </div>
       
       {/* Title with better styling */}
       <div className="relative mb-6">
-        <h1 className="text-3xl text-center font-bold tracking-wider">NCSC INTELLIGENCE HUB</h1>
+        <h1 className="text-3xl text-center font-bold tracking-wider">NCSC || OFFICIAL WEBSITE</h1>
         <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
       </div>
       

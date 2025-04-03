@@ -24,20 +24,20 @@ const AboutPage = () => {
         <div className="flex items-start">
           <div className="hidden md:block mr-6 flex-shrink-0">
             <div className="w-24 h-24 rounded-full border-2 border-primary p-2 flex items-center justify-center rotation-reverse">
-              <Shield className="h-12 w-12 text-primary" />
+              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-18 w-18" />
             </div>
           </div>
           
           <div>
             <h2 className="text-2xl font-bold mb-4 flex items-center">
-              <Shield className="h-5 w-5 mr-2 text-primary md:hidden" />
+              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-5 w-5 mr-2 md:hidden" />
               About NCSC
             </h2>
             <p className="mb-4 leading-relaxed">
               The National Counterintelligence and Security Center (NCSC) operates as the leading authority within the USDCE, specializing in high-profile investigations that impact the integrity of the community, including key leadership and command structures.
             </p>
             <p className="leading-relaxed">
-              Our Mission: Finding corrupt HICOM and [REDACTED]. NCSC provides comprehensive monitoring, investigation, and response capabilities to protect digital environments and their users.
+              Our Mission: To identify and neutralize counterintelligence threats, detect unauthorized disclosures of classified information, and protect against [REDACTED]. NCSC provides comprehensive monitoring, investigation, and response capabilities to safeguard national security interests.
             </p>
             
             <div className="mt-4 bg-background/50 border border-border rounded-md p-4">
