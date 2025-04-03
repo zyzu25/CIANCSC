@@ -4,6 +4,7 @@ import LeadershipSection from "./LeadershipSection";
 import { useTheme } from "../hooks/useTheme";
 import ClassifiedWatermark from "./ClassifiedWatermark";
 import ncscLogoPath from "../assets/NCSC.png";
+import directorOfIntelligenceImage from "../assets/director-of-intelligence.png";
 
 const AboutPage = () => {
   const { isDark } = useTheme();
@@ -104,7 +105,8 @@ const AboutPage = () => {
               name: "afouttggjr",
               discord: "afouttttt",
               initials: "AI",
-              discordLabel: "Discord:"
+              discordLabel: "Discord:",
+              profileImage: directorOfIntelligenceImage
             },
             {
               role: "Deputy Director of Intelligence",

@@ -15,6 +15,7 @@ interface LeadershipCardProps {
   initials?: string;
   nameLabel: string;
   discordLabel: string;
+  profileImage?: string;
 }
 
 const LeadershipCard = ({ 
@@ -26,7 +27,8 @@ const LeadershipCard = ({
   vacant = false,
   initials = "",
   nameLabel,
-  discordLabel
+  discordLabel,
+  profileImage
 }: LeadershipCardProps) => {
   const { isDark } = useTheme();
   
@@ -40,6 +42,8 @@ const LeadershipCard = ({
         <div className={`w-12 h-12 rounded-full ${badge.color} mr-4 flex items-center justify-center shadow-lg relative overflow-hidden`}>
           {vacant ? (
             <span className="text-xs uppercase font-mono tracking-wider">Open</span>
+          ) : profileImage ? (
+            <img src={profileImage} alt={name} className="absolute inset-0 w-full h-full object-cover" />
           ) : (
             <>
               <div className="absolute inset-0 bg-black opacity-20"></div>
