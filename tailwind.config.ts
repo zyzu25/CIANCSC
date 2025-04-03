@@ -45,6 +45,14 @@ export default {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--foreground))",
         },
+        ncsc: {
+          "threat-red": "#FF2A2A",
+          "recruitment-gold": "#FFD700",
+          "feedback-blue": "#0366D6",
+          "request-gray": "#6A737D",
+          "pitch-black": "#0C0C0C",
+          "dark-gray": "#1C1C1C"
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
