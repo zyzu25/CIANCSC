@@ -16,9 +16,7 @@ import ClassifiedWatermark from './ClassifiedWatermark';
 // Form schemas for each contact category
 const threatReportSchema = z.object({
   discordUsername: z.string().min(1, "Discord username is required"),
-  robloxUsername: z.string().min(1, "Roblox username is required"),
   suspectDiscord: z.string().min(1, "Suspect's Discord username is required"),
-  suspectRoblox: z.string().min(1, "Suspect's Roblox username is required"),
   incidentTime: z.string().min(1, "Incident timestamp is required"),
   description: z.string().min(10, "Please provide detailed information about the incident"),
   evidence: z.string().optional(),
@@ -26,7 +24,6 @@ const threatReportSchema = z.object({
 
 const recruitmentSchema = z.object({
   discordUsername: z.string().min(1, "Discord username is required"),
-  robloxUsername: z.string().min(1, "Roblox username is required"),
   age: z.string()
     .min(1, "Age is required")
     .refine((val) => parseInt(val) >= 14, "You must be at least 14 years old"),
@@ -35,7 +32,6 @@ const recruitmentSchema = z.object({
 
 const feedbackSchema = z.object({
   discordUsername: z.string().min(1, "Discord username is required"),
-  robloxUsername: z.string().min(1, "Roblox username is required"),
   pageUrl: z.string().min(1, "Page URL is required"),
   description: z.string().min(10, "Please provide detailed information about the issue or suggestion"),
   screenshot: z.string().optional(),
@@ -43,7 +39,6 @@ const feedbackSchema = z.object({
 
 const otherRequestSchema = z.object({
   discordUsername: z.string().min(1, "Discord username is required"),
-  robloxUsername: z.string().min(1, "Roblox username is required"),
   requestType: z.enum(["data-deletion", "press-media", "legal-request"], {
     required_error: "Please select a request type",
   }),
@@ -67,9 +62,7 @@ const ContactPage: React.FC = () => {
     resolver: zodResolver(threatReportSchema),
     defaultValues: {
       discordUsername: "",
-      robloxUsername: "",
       suspectDiscord: "",
-      suspectRoblox: "",
       incidentTime: "",
       description: "",
       evidence: "",
@@ -80,7 +73,6 @@ const ContactPage: React.FC = () => {
     resolver: zodResolver(recruitmentSchema),
     defaultValues: {
       discordUsername: "",
-      robloxUsername: "",
       age: "",
       statement: "",
     },
@@ -90,7 +82,6 @@ const ContactPage: React.FC = () => {
     resolver: zodResolver(feedbackSchema),
     defaultValues: {
       discordUsername: "",
-      robloxUsername: "",
       pageUrl: "",
       description: "",
       screenshot: "",
@@ -101,7 +92,6 @@ const ContactPage: React.FC = () => {
     resolver: zodResolver(otherRequestSchema),
     defaultValues: {
       discordUsername: "",
-      robloxUsername: "",
       requestType: "data-deletion",
       justification: "",
     },
@@ -219,63 +209,33 @@ const ContactPage: React.FC = () => {
               <CardContent>
                 <Form {...threatForm}>
                   <form onSubmit={threatForm.handleSubmit((data) => handleSubmit(data, 'threat-report'))} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={threatForm.control}
-                        name="discordUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Discord Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourName#1234" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={threatForm.control}
-                        name="robloxUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Roblox Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourRobloxName" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <FormField
+                      control={threatForm.control}
+                      name="discordUsername"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Your Discord Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="YourName#1234" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={threatForm.control}
-                        name="suspectDiscord"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Suspect Discord Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="SuspectName#1234" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={threatForm.control}
-                        name="suspectRoblox"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Suspect Roblox Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="SuspectRobloxName" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <FormField
+                      control={threatForm.control}
+                      name="suspectDiscord"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Suspect Discord Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="SuspectName#1234" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <FormField
                       control={threatForm.control}
@@ -362,34 +322,19 @@ const ContactPage: React.FC = () => {
               <CardContent>
                 <Form {...recruitmentForm}>
                   <form onSubmit={recruitmentForm.handleSubmit((data) => handleSubmit(data, 'recruitment'))} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={recruitmentForm.control}
-                        name="discordUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Discord Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourName#1234" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={recruitmentForm.control}
-                        name="robloxUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Roblox Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourRobloxName" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <FormField
+                      control={recruitmentForm.control}
+                      name="discordUsername"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Your Discord Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="YourName#1234" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <FormField
                       control={recruitmentForm.control}
@@ -456,34 +401,19 @@ const ContactPage: React.FC = () => {
               <CardContent>
                 <Form {...feedbackForm}>
                   <form onSubmit={feedbackForm.handleSubmit((data) => handleSubmit(data, 'feedback'))} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={feedbackForm.control}
-                        name="discordUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Discord Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourName#1234" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={feedbackForm.control}
-                        name="robloxUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Roblox Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourRobloxName" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <FormField
+                      control={feedbackForm.control}
+                      name="discordUsername"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Your Discord Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="YourName#1234" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <FormField
                       control={feedbackForm.control}
@@ -567,34 +497,19 @@ const ContactPage: React.FC = () => {
               <CardContent>
                 <Form {...otherRequestForm}>
                   <form onSubmit={otherRequestForm.handleSubmit((data) => handleSubmit(data, 'other-request'))} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={otherRequestForm.control}
-                        name="discordUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Discord Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourName#1234" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={otherRequestForm.control}
-                        name="robloxUsername"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Roblox Username</FormLabel>
-                            <FormControl>
-                              <Input placeholder="YourRobloxName" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <FormField
+                      control={otherRequestForm.control}
+                      name="discordUsername"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Your Discord Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="YourName#1234" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <FormField
                       control={otherRequestForm.control}

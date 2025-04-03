@@ -1,5 +1,5 @@
-import { Shield, Lock, AlertTriangle } from 'lucide-react';
-import { SiDiscord, SiRoblox } from "react-icons/si";
+import { Shield, Lock, AlertTriangle, Mail } from 'lucide-react';
+import { SiDiscord } from "react-icons/si";
 import { useTheme } from "../hooks/useTheme";
 
 const Footer = () => {
@@ -43,8 +43,8 @@ const Footer = () => {
             <span className="text-sm">Discord: <span className="font-medium">@ncsc_official</span></span>
           </div>
           <div className="flex items-center">
-            <SiRoblox className="h-5 w-5 mr-2 roblox-icon" />
-            <span className="text-sm">Roblox: <span className="font-medium">@NCSC_Intel</span></span>
+            <Mail className="h-5 w-5 mr-2" />
+            <span className="text-sm">Email: <span className="font-medium">contact@ncsc-intelligence.gov</span></span>
           </div>
         </div>
         

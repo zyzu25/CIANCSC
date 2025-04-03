@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Shield, LockKeyhole, Database, Search } from "lucide-react";
-import { SiDiscord, SiRoblox } from "react-icons/si";
+import { Shield, LockKeyhole, Database, Search, Mail } from "lucide-react";
+import { SiDiscord } from "react-icons/si";
 import { useTheme } from "../hooks/useTheme";
 
 const LoadingScreen = () => {
@@ -178,8 +178,8 @@ const LoadingScreen = () => {
           <span className="text-xs text-muted-foreground">Discord: <span className="text-foreground">@ncsc_official</span></span>
         </div>
         <div className="flex items-center">
-          <SiRoblox className="h-4 w-4 mr-1.5 roblox-icon" />
-          <span className="text-xs text-muted-foreground">Roblox: <span className="text-foreground">@NCSC_Intel</span></span>
+          <Mail className="h-4 w-4 mr-1.5" />
+          <span className="text-xs text-muted-foreground">Email: <span className="text-foreground">contact@ncsc-intelligence.gov</span></span>
         </div>
       </div>
       

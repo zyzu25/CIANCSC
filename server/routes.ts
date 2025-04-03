@@ -27,10 +27,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           case 'threat-report':
             threatReportSchema.parse(formData.formData);
             break;
-          case 'recruitment-inquiry':
+          case 'recruitment':
             recruitmentSchema.parse(formData.formData);
             break;
-          case 'website-feedback':
+          case 'feedback':
             feedbackSchema.parse(formData.formData);
             break;
           case 'other-request':
@@ -112,9 +112,9 @@ function formatFormType(formType: string): string {
   switch (formType) {
     case 'threat-report':
       return 'Threat Report';
-    case 'recruitment-inquiry':
+    case 'recruitment':
       return 'Recruitment Inquiry';
-    case 'website-feedback':
+    case 'feedback':
       return 'Website Feedback';
     case 'other-request':
       return 'Other Request';
@@ -135,7 +135,7 @@ function getDiscordEmbed(formData: ContactFormData, ipAddress: string, submissio
       text: `IP: ${ipAddress} • Submission ID: ${submissionId}`
     },
     thumbnail: {
-      url: "https://i.imgur.com/mI8XcDr.png"
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Seal_of_the_National_Counterintelligence_and_Security_Center.svg/1200px-Seal_of_the_National_Counterintelligence_and_Security_Center.svg.png"
     }
   };
   
@@ -143,55 +143,51 @@ function getDiscordEmbed(formData: ContactFormData, ipAddress: string, submissio
   switch (formType) {
     case 'threat-report':
       embed.color = 0xFF2A2A; // Red
-      embed.description = `**Incident Report**: ${data.threat}`;
+      embed.description = `**Incident Report Details**`;
       embed.fields = [
-        { name: 'Reporter Info', value: `Name: ${data.name}\nDiscord: ${data.discord}\nRoblox: ${data.roblox}`, inline: true },
-        { name: 'Details', value: data.details, inline: true },
-        { name: 'Urgency', value: data.urgency.toUpperCase() }
+        { name: 'Reporter Info', value: `Discord: ${data.discordUsername}`, inline: true },
+        { name: 'Suspect Discord', value: data.suspectDiscord, inline: true },
+        { name: 'Incident Time', value: data.incidentTime, inline: false },
+        { name: 'Description', value: data.description, inline: false }
       ];
-      if (data.location) {
-        embed.fields.push({ name: 'Location', value: data.location });
+      if (data.evidence) {
+        embed.fields.push({ name: 'Evidence URL', value: data.evidence });
       }
       embed.footer.text += ' • ⚠ False reports result in bans';
       break;
       
-    case 'recruitment-inquiry':
+    case 'recruitment':
       embed.color = 0xFFD700; // Gold
-      embed.description = `**Motivation**: ${data.motivation}`;
+      embed.description = `**NCSC Recruitment Inquiry**`;
       embed.fields = [
-        { name: 'Applicant Info', value: `Name: ${data.name}\nDiscord: ${data.discord}\nRoblox: ${data.roblox}`, inline: true },
-        { name: 'Experience', value: data.experience, inline: true },
-        { name: 'Skills', value: data.skills }
+        { name: 'Applicant Info', value: `Discord: ${data.discordUsername}\nAge: ${data.age}`, inline: true },
+        { name: 'Statement', value: data.statement, inline: false }
       ];
-      if (data.referral) {
-        embed.fields.push({ name: 'Referral', value: data.referral });
-      }
       embed.footer.text += ' • 🔒 Requires background check';
       break;
       
-    case 'website-feedback':
+    case 'feedback':
       embed.color = 0x0366D6; // Blue
-      embed.description = `**Feedback**: ${data.feedback}`;
+      embed.description = `**Website Feedback Submitted**`;
       embed.fields = [
-        { name: 'Reporter Info', value: `Name: ${data.name}\nDiscord: ${data.discord}\nRoblox: ${data.roblox}`, inline: true },
-        { name: 'Rating', value: data.rating.toUpperCase(), inline: true }
+        { name: 'Reporter Info', value: `Discord: ${data.discordUsername}`, inline: true },
+        { name: 'Page URL', value: data.pageUrl, inline: true },
+        { name: 'Description', value: data.description, inline: false }
       ];
-      if (data.suggestions) {
-        embed.fields.push({ name: 'Suggestions', value: data.suggestions });
+      if (data.screenshot) {
+        embed.fields.push({ name: 'Screenshot URL', value: data.screenshot });
       }
       embed.footer.text += ' • 🛠️ Technical feedback prioritized';
       break;
       
     case 'other-request':
       embed.color = 0x6A737D; // Gray
-      embed.description = `**Request**: ${data.request}`;
+      embed.description = `**Other Request Submitted**`;
       embed.fields = [
-        { name: 'Requester Info', value: `Name: ${data.name}\nDiscord: ${data.discord}\nRoblox: ${data.roblox}`, inline: true },
-        { name: 'Category', value: formatRequestType(data.category), inline: true }
+        { name: 'Requester Info', value: `Discord: ${data.discordUsername}`, inline: true },
+        { name: 'Request Type', value: formatRequestType(data.requestType), inline: true },
+        { name: 'Justification', value: data.justification, inline: false }
       ];
-      if (data.additionalInfo) {
-        embed.fields.push({ name: 'Additional Info', value: data.additionalInfo });
-      }
       embed.footer.text += ' • 📝 Logged for review';
       break;
   }
@@ -202,18 +198,12 @@ function getDiscordEmbed(formData: ContactFormData, ipAddress: string, submissio
 // Helper function to format request types
 function formatRequestType(requestType: string): string {
   switch (requestType) {
-    case 'data':
-      return 'Data Request/Deletion';
-    case 'press':
+    case 'data-deletion':
+      return 'Data Deletion Request';
+    case 'press-media':
       return 'Press/Media Inquiry';
-    case 'legal':
+    case 'legal-request':
       return 'Legal Matter';
-    case 'collaboration':
-      return 'Collaboration Proposal';
-    case 'complaint':
-      return 'Formal Complaint';
-    case 'other':
-      return 'Other Request';
     default:
       return requestType;
   }

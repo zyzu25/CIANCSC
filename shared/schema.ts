@@ -38,41 +38,32 @@ export type ContactFormSubmission = typeof contactFormSubmissions.$inferSelect;
 
 // Validation schemas for different form types
 export const threatReportSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  discord: z.string().min(1, "Discord username is required"),
-  roblox: z.string().min(1, "Roblox username is required"),
-  threat: z.string().min(5, "Threat description is required"),
-  location: z.string().optional(),
-  details: z.string().min(10, "Please provide detailed information"),
-  urgency: z.enum(["low", "medium", "high", "critical"]),
+  discordUsername: z.string().min(1, "Discord username is required"),
+  suspectDiscord: z.string().min(1, "Suspect's Discord username is required"),
+  incidentTime: z.string().min(1, "Incident timestamp is required"),
+  description: z.string().min(10, "Please provide detailed information about the incident"),
+  evidence: z.string().optional(),
 });
 
 export const recruitmentSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  discord: z.string().min(1, "Discord username is required"),
-  roblox: z.string().min(1, "Roblox username is required"),
-  experience: z.string().min(10, "Experience information is required"),
-  skills: z.string().min(5, "Skills information is required"),
-  motivation: z.string().min(10, "Please explain your motivation"),
-  referral: z.string().optional(),
+  discordUsername: z.string().min(1, "Discord username is required"),
+  age: z.string()
+    .min(1, "Age is required")
+    .refine((val) => parseInt(val) >= 14, "You must be at least 14 years old"),
+  statement: z.string().min(20, "Please provide a brief statement about why you want to join"),
 });
 
 export const feedbackSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  discord: z.string().min(1, "Discord username is required"),
-  roblox: z.string().min(1, "Roblox username is required"),
-  feedback: z.string().min(10, "Feedback is required"),
-  rating: z.enum(["excellent", "good", "average", "poor", "terrible"]),
-  suggestions: z.string().optional(),
+  discordUsername: z.string().min(1, "Discord username is required"),
+  pageUrl: z.string().min(1, "Page URL is required"),
+  description: z.string().min(10, "Please provide detailed information about the issue or suggestion"),
+  screenshot: z.string().optional(),
 });
 
 export const otherRequestSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  discord: z.string().min(1, "Discord username is required"),
-  roblox: z.string().min(1, "Roblox username is required"),
-  category: z.enum(["data", "press", "legal", "collaboration", "complaint", "other"], {
-    errorMap: () => ({ message: "Please select a category" })
+  discordUsername: z.string().min(1, "Discord username is required"),
+  requestType: z.enum(["data-deletion", "press-media", "legal-request"], {
+    required_error: "Please select a request type",
   }),
-  request: z.string().min(10, "Please provide a detailed request"),
-  additionalInfo: z.string().optional(),
+  justification: z.string().min(20, "Please provide a detailed justification for your request"),
 });

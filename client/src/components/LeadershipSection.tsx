@@ -15,8 +15,6 @@ interface LeadershipSectionProps {
     isRedacted?: boolean;
     discordLabel?: string;
     discord: string;
-    robloxLabel?: string;
-    roblox: string;
     vacant?: boolean;
     initials?: string;
   }[];
@@ -58,13 +56,11 @@ const LeadershipSection = ({
               name={leader.name}
               isRedacted={leader.isRedacted}
               discord={leader.discord}
-              roblox={leader.roblox}
               badge={{ color: badgeColor, text: title }}
               vacant={leader.vacant}
               initials={leader.initials}
               nameLabel={leader.nameLabel || "Name:"}
               discordLabel={leader.discordLabel || "Discord:"}
-              robloxLabel={leader.robloxLabel || "Roblox:"}
             />
           ))}
         </div>

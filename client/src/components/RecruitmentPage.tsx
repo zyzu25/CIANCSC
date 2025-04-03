@@ -3,7 +3,7 @@ import {
   Play, Shield, Info, FileText, AlertTriangle, ChevronRight, 
   Star, User, Lock, ExternalLink 
 } from "lucide-react";
-import { SiDiscord, SiRoblox } from "react-icons/si";
+import { SiDiscord } from "react-icons/si";
 
 interface RecruitmentPageProps {
   applicationUrl?: string;
@@ -12,7 +12,7 @@ interface RecruitmentPageProps {
 const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdVED14zX66oVHsRudvO4iwvxdmKIEvj45ym3PTjVj2ROkZyA/viewform?usp=sharing" }: RecruitmentPageProps) => {
   const [activeTab, setActiveTab] = useState("faq");
 
-  const handleStartApplication = () => {
+  const handleRecruitmentInquiry = () => {
     window.open(applicationUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -313,9 +313,9 @@ const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1
               
               <button
                 className="w-full py-3 button-hover rounded-md font-medium flex items-center justify-center space-x-2"
-                onClick={handleStartApplication}
+                onClick={handleRecruitmentInquiry}
               >
-                <span>Start Application</span>
+                <span>Recruitment Inquiry</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
               
@@ -331,10 +331,6 @@ const RecruitmentPage = ({ applicationUrl = "https://docs.google.com/forms/d/e/1
                 <div className="flex items-center">
                   <SiDiscord className="h-4 w-4 mr-2 discord-icon" />
                   <span className="text-xs">Discord: <span className="font-medium">@ncsc_official</span></span>
-                </div>
-                <div className="flex items-center">
-                  <SiRoblox className="h-4 w-4 mr-2 roblox-icon" />
-                  <span className="text-xs">Roblox: <span className="font-medium">@NCSC_Intel</span></span>
                 </div>
               </div>
             </div>

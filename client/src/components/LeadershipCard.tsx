@@ -1,5 +1,5 @@
-import { User, Headset, Gamepad2 } from 'lucide-react';
-import { SiDiscord, SiRoblox } from "react-icons/si";
+import { User } from 'lucide-react';
+import { SiDiscord } from "react-icons/si";
 import { useTheme } from '../hooks/useTheme';
 
 interface LeadershipCardProps {
@@ -7,7 +7,6 @@ interface LeadershipCardProps {
   name: string;
   isRedacted?: boolean;
   discord: string;
-  roblox: string;
   badge: {
     color: string;
     text: string;
@@ -16,7 +15,6 @@ interface LeadershipCardProps {
   initials?: string;
   nameLabel: string;
   discordLabel: string;
-  robloxLabel: string;
 }
 
 const LeadershipCard = ({ 
@@ -24,13 +22,11 @@ const LeadershipCard = ({
   name, 
   isRedacted = false,
   discord, 
-  roblox, 
   badge,
   vacant = false,
   initials = "",
   nameLabel,
-  discordLabel,
-  robloxLabel
+  discordLabel
 }: LeadershipCardProps) => {
   const { isDark } = useTheme();
   
@@ -82,16 +78,6 @@ const LeadershipCard = ({
             <div className="flex-1">
               <div className="text-xs text-muted-foreground mb-0.5">{discordLabel}</div>
               <div className={`text-sm font-mono ${isRedacted ? 'redacted' : ''}`}>{discord}</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center">
-            <div className="w-7 mr-3 text-muted-foreground">
-              <SiRoblox className="h-4 w-4 roblox-icon" />
-            </div>
-            <div className="flex-1">
-              <div className="text-xs text-muted-foreground mb-0.5">{robloxLabel}</div>
-              <div className={`text-sm font-mono ${isRedacted ? 'redacted' : ''}`}>{roblox}</div>
             </div>
           </div>
         </div>

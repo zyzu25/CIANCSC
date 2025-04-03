@@ -102,19 +102,15 @@ const AboutPage = () => {
               role: "Director of Intelligence",
               name: "afouttggjr",
               discord: "afouttttt",
-              roblox: "afouttttt",
               initials: "AI",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             },
             {
               role: "Deputy Director of Intelligence",
               name: "wassup_werq",
               discord: "wassup_werq",
-              roblox: "iifirebunn41265",
               initials: "WW",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             }
           ]}
         />
@@ -130,21 +126,17 @@ const AboutPage = () => {
               role: "NCSC Director",
               name: "Sodalmpratus5",
               discord: "Sodalmpratus5",
-              roblox: "cd_xdawn",
               isRedacted: false,
               initials: "SP",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             },
             {
               role: "NCSC Deputy Director",
               name: "Classified_891",
               discord: "Classified_891",
-              roblox: "classified_891",
               isRedacted: false,
               initials: "C8",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             }
           ]}
         />
@@ -160,21 +152,17 @@ const AboutPage = () => {
               role: "HUMINT Director",
               name: "Classified_891",
               discord: "Classified_891",
-              roblox: "classified_891",
               isRedacted: false,
               initials: "C8",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             },
             {
               role: "HUMINT Deputy Director",
               discord: "",
-              roblox: "",
               name: "",
               vacant: true,
               initials: "HD",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             }
           ]}
         />
@@ -190,21 +178,17 @@ const AboutPage = () => {
               role: "Operations Director",
               name: "[REDACTED]",
               discord: "[REDACTED]",
-              roblox: "[REDACTED]",
               isRedacted: true,
               initials: "OD",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             },
             {
               role: "Special Operations Lead",
               name: "[REDACTED]",
               discord: "[REDACTED]",
-              roblox: "[REDACTED]",
               isRedacted: true,
               initials: "SL",
-              discordLabel: "Discord:",
-              robloxLabel: "Roblox:"
+              discordLabel: "Discord:"
             }
           ]}
         />
