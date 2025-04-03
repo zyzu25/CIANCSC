@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import LeadershipCard from './LeadershipCard';
 import { Shield, CornerDownRight, User } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
+import agentIconPath from '../assets/agent-icon.png';
 
 interface LeadershipSectionProps {
   title: string;
@@ -32,7 +33,7 @@ const LeadershipSection = ({
   return (
     <div className="mb-12 bg-card rounded-lg overflow-hidden border border-border shadow-lg relative corner-box">
       <div className={`${titleBgColor} py-3 px-4 flex items-center border-b border-border`}>
-        <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-5 w-5 mr-2" />
+        <img src={agentIconPath} alt="NCSC Agent Icon" className="h-5 w-5 mr-2" />
         <h3 className="font-bold tracking-wide">{title}</h3>
       </div>
       
