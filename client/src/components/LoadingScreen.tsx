@@ -119,7 +119,7 @@ const LoadingScreen = () => {
         <div className="absolute inset-4 rounded-full border border-dashed border-primary opacity-20 rotation-reverse"></div>
         
         <div className="w-full h-full flex items-center justify-center">
-          <img src="/src/assets/NCSC.png" alt="NCSC Logo" className="w-24 h-24" />
+          <img src="/src/assets/NCSC.png" alt="NCSC Logo" className="w-32 h-32" />
         </div>
       </div>
       

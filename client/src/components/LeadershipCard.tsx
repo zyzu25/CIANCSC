@@ -48,9 +48,9 @@ const LeadershipCard = ({
           )}
         </div>
         <div>
-          <h4 className="text-sm font-bold mb-1">{title === "Intelligence Operations" ? "[REDACTED] " : ""}{role}</h4>
+          <h4 className="text-sm font-bold mb-1">{role}</h4>
           <span className={`text-xs ${badge.color} px-2 py-0.5 rounded-full text-white font-mono tracking-tight shadow-sm`}>
-            {title === "Intelligence Operations" ? "[REDACTED] " : ""}{badge.text}
+            {badge.text}
           </span>
         </div>
       </div>

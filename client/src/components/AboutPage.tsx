@@ -23,8 +23,8 @@ const AboutPage = () => {
       <div className="mb-12 bg-card rounded-lg p-6 border border-border shadow-lg classified-document">
         <div className="flex items-start">
           <div className="hidden md:block mr-6 flex-shrink-0">
-            <div className="w-24 h-24 rounded-full border-2 border-primary p-2 flex items-center justify-center rotation-reverse">
-              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-18 w-18" />
+            <div className="w-28 h-28 rounded-full border-2 border-primary p-1 flex items-center justify-center rotation-reverse">
+              <img src="@assets/NCSC.png" alt="NCSC Logo" className="h-24 w-24" />
             </div>
           </div>
           
